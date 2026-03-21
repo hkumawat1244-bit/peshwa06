@@ -3,19 +3,25 @@ const noBtn = document.querySelector('.js-no-btn');
 const questionContainer = document.querySelector('.question-container');
 const resultContainer = document.querySelector('.result-container');
 
-// 1. When "Yes" is clicked, show the result
+// 1. Logic for clicking "Yes"
 yesBtn.addEventListener('click', () => {
+    // Hide the question and show the result
     questionContainer.style.display = 'none';
     resultContainer.style.display = 'block';
 });
 
-// 2. Make the "No" button run away!
+// 2. Logic to make the "No" button dodge the mouse
 noBtn.addEventListener('mouseover', () => {
-    // Calculate random positions
-    const x = Math.floor(Math.random() * (window.innerWidth - noBtn.offsetWidth));
-    const y = Math.floor(Math.random() * (window.innerHeight - noBtn.offsetHeight));
+    // Get screen dimensions minus button size so it stays on screen
+    const maxX = window.innerWidth - noBtn.offsetWidth;
+    const maxY = window.innerHeight - noBtn.offsetHeight;
 
-    // Apply new position
-    noBtn.style.left = `${x}px`;
-    noBtn.style.top = `${y}px`;
+    // Generate random coordinates
+    const randomX = Math.floor(Math.random() * maxX);
+    const randomY = Math.floor(Math.random() * maxY);
+
+    // Apply the new position
+    noBtn.style.position = 'fixed'; // Ensures it moves relative to the window
+    noBtn.style.left = randomX + 'px';
+    noBtn.style.top = randomY + 'px';
 });
