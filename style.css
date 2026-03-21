@@ -1,48 +1,54 @@
-<link rel="stylesheet" type="text/css" href="style.css">
-package main
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #ffe6ea; /* Soft pink background */
+    font-family: 'Arial', sans-serif;
+}
 
-/*
- * Go random number generation.
- */
+.container {
+    text-align: center;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
 
-import (
-	"fmt"
-	"math/rand"
-	"os"
-	"strconv"
-)
+.local-gif, .gif-result {
+    width: 250px;
+    border-radius: 15px;
+}
 
-func main() {
-	args := os.Args[1:]
+h2 {
+    color: #ff4d6d;
+    margin: 20px 0;
+}
 
-	// seq_length, _ := strconv.ParseInt(args[0], 10, 64)
-	seed, _ := strconv.ParseInt(args[0], 10, 64)
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    height: 50px; /* Important for the No button to move within space */
+}
 
-	rand_source := rand.New(rand.NewSource(0))
-	rand.Seed(seed)
+.btn {
+    padding: 10px 25px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
 
-	// var seq int64 = 0
-	skips := 120
-	jumps := 3
+.yes-btn {
+    background-color: #ff4d6d;
+    color: white;
+}
 
-	for i := 0; i < skips; i++ {
-		rand.Int()
-	}
-
-	for k := 0; k < jumps; k++ {
-		// Generate sequence from seed.
-		for i := int64(0); i < 18; i++ {
-			val := rand.Intn(2)
-			fmt.Printf("%d", val)
-		}
-
-		fmt.Printf(" ")
-
-		// Skip some.
-		skip_amt := 12 + rand_source.Intn(5)
-		for i := 0; i < skip_amt; i++ {
-			rand.Int()
-		}
-	}
-
+.no-btn {
+    background-color: #eee;
+    color: #333;
+    position: absolute; /* Needed for the "running away" effect */
 }
