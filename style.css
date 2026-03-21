@@ -4,42 +4,43 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #ffe6ea; /* Soft pink background */
+    background-color: #ffe6ea;
     font-family: 'Arial', sans-serif;
+    overflow: hidden; /* Taaki button screen ke bahar na jaye */
 }
 
 .container {
     text-align: center;
     background: white;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
 .local-gif, .gif-result {
-    width: 250px;
-    border-radius: 15px;
+    width: 200px;
+    margin-bottom: 20px;
 }
 
 h2 {
     color: #ff4d6d;
-    margin: 20px 0;
+    font-size: 2rem;
 }
 
 .button-container {
+    margin-top: 30px;
     display: flex;
     justify-content: center;
     gap: 20px;
-    height: 50px; /* Important for the No button to move within space */
 }
 
 .btn {
-    padding: 10px 25px;
+    padding: 12px 30px;
     font-size: 1.2rem;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     cursor: pointer;
-    transition: 0.3s;
+    font-weight: bold;
 }
 
 .yes-btn {
@@ -50,5 +51,5 @@ h2 {
 .no-btn {
     background-color: #eee;
     color: #333;
-    position: absolute; /* Needed for the "running away" effect */
+    position: relative; /* JavaScript isse move karega */
 }
