@@ -1,124 +1,32 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wingo 1-Min | Home</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: #f0f2f5; color: #333; }
-        
-        /* Header & Navigation */
-        header { background: #d32f2f; color: white; padding: 15px; text-align: center; font-size: 24px; font-weight: bold; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
-
-        .container { padding: 20px; max-width: 500px; margin: auto; }
-
-        /* Banner */
-        .banner { background: linear-gradient(45deg, #ff5252, #d32f2f); color: white; padding: 30px 20px; border-radius: 15px; text-align: center; margin-bottom: 25px; }
-        .banner h1 { font-size: 28px; margin-bottom: 10px; }
-        .banner p { font-size: 16px; opacity: 0.9; }
-
-        /* Login Box on Index */
-        .login-box { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 20px; }
-        .login-box h3 { margin-bottom: 20px; text-align: center; color: #d32f2f; }
-        
-        .input-field { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; }
-        .input-field:focus { border-color: #d32f2f; }
-
-        .btn-login { width: 100%; padding: 12px; background: #d32f2f; color: white; border: none; border-radius: 8px; font-size: 18px; cursor: pointer; transition: 0.3s; }
-        .btn-login:hover { background: #b71c1c; }
-
-        /* Quick Links */
-        .links { display: flex; justify-content: space-between; margin-top: 15px; font-size: 14px; }
-        .links a { color: #d32f2f; text-decoration: none; font-weight: bold; }
-
-        /* Game Features */
-        .features { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
-        .feature-card { background: white; padding: 15px; border-radius: 10px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        .feature-card i { font-size: 24px; color: #d32f2f; display: block; margin-bottom: 5px; }
-    </style>
+    <title>Do You Love Me?</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>LOTTERY KING</header>
-
-<div class="container">
-    <div class="banner">
-        <h1>Wingo 1-Min</h1>
-        <p>Kheliye aur Jeetiye Har Minute!</p>
-    </div>
-
-    <div class="login-box">
-        <h3>User Login</h3>
-        <form action="login_process.php" method="POST">
-            <input type="tel" name="mobile" class="input-field" placeholder="Mobile Number" required>
-            <input type="password" name="password" class="input-field" placeholder="Password" required>
-            <button type="submit" class="btn-login">Login</button>
-        </form>
+    <div class="wrapper">
         
-        <div class="links">
-            <a href="register.php">Create Account</a>
-            <a href="forgot_password.php">Forgot Password?</a>
+        <div class="question-container container">
+            <video class="local-gif" src="Reply me love.mp4" loop autoplay muted></video>
+            <h2 class="question">Do you love me?</h2>
+            
+            <div class="button-container">
+                <button class="yes-btn btn js-yes-btn">Yes</button>
+                <button class="no-btn btn js-no-btn">No</button>
+            </div>
         </div>
+
+        <div class="result-container container" style="display: none;">
+            <video class="gif-result" src="Love me.mp4" autoplay loop muted></video>
+            <h2 class="result-text">I knew it! 😍</h2>
+        </div>
+
     </div>
 
-    <div class="features">
-        <div class="feature-card">
-            <b>Fast Results</b>
-            <p>1 Min Game</p>
-        </div>
-        <div class="feature-card">
-            <b>Secure</b>
-            <p>100% Safe</p>
-        </div>
-    </div> 
-</div>
-    <!DOCTYPE html>
-<html lang="hi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wingo 1-Min | Home</title>
-    
-    <style>
-        body { background-color: #1a1a1a; color: white; font-family: sans-serif; text-align: center; }
-        .timer-box { font-size: 50px; color: #ffeb3b; margin: 20px; padding: 20px; border: 2px solid #ffeb3b; display: inline-block; border-radius: 10px; }
-        .btn { background: #d32f2f; color: white; padding: 15px 30px; border: none; border-radius: 5px; cursor: pointer; font-size: 20px; }
-    </style>
-</head>
-<body>
-
-    <h1>Wingo Lottery King</h1>
-    
-    <div class="timer-box">
-        00:<span id="seconds">60</span>
-    </div>
-
-    <br>
-    <button class="btn" onclick="testClick()">Bet Now</button>
-
-    <script>
-        // Timer Logic
-        let timeLeft = 60;
-        const timerDisplay = document.getElementById('seconds');
-
-        setInterval(() => {
-            if(timeLeft <= 0) {
-                timeLeft = 60; // Reset timer
-                alert("Time Up! New Round Starting.");
-            }
-            timeLeft--;
-            timerDisplay.innerText = timeLeft < 10 ? '0' + timeLeft : timeLeft;
-        }, 1000);
-
-        // Click Test
-        function testClick() {
-            alert("JS Kaam kar raha hai!");
-        }
-    </script>
-
-</body>
-</html>
-
+    <script src="script.js"></script>
 </body>
 </html>
