@@ -1,30 +1,116 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Do You Love Me?</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RNG — Real-Time Generator</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Bebas+Neue&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet"/>
 </head>
 <body>
 
-    <div class="wrapper">
-        <div class="question-container container">
-            <img class="local-gif" src="https://share.google/DLBiXqqwjOA4QcsIM/media/v1.Y2lkPTc5MGI3NjExOHpueXh6eGZ6ZHg0eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/L4lvBze6S6S04P8W3h/giphy.gif" alt="Asking GIF">
-            <h2 class="question">Do you love me?</h2>
-            
-            <div class="button-container">
-                <button class="yes-btn btn js-yes-btn">Yes</button>
-                <button class="no-btn btn js-no-btn">No</button>
-            </div>
-        </div>
+  <!-- Animated background grid -->
+  <canvas id="bgCanvas"></canvas>
 
-        <div class="result-container container" style="display: none;">
-            <img class="gif-result" src="https://share.google/DLBiXqqwjOA4QcsIM/media/v1.Y2lkPTc5MGI3NjExOHpueXh6eGZ6ZHg0eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/KztT2c4u8mYYUiCi7X/giphy.gif" alt="Happy GIF">
-            <h2 class="result-text">I knew it! 😍</h2>
-        </div>
-    </div>
+  <div class="container">
 
-    <script src="script.js"></script>
+    <header class="header">
+      <div class="logo-badge">SYS</div>
+      <h1 class="title">RANDOM NUMBER<br/><span class="accent">GENERATOR</span></h1>
+      <div class="subtitle">REAL-TIME · 1 MIN · 1 NUMBER</div>
+    </header>
+
+    <!-- Main number display -->
+    <section class="main-display">
+      <div class="display-frame">
+        <div class="scanline"></div>
+        <div class="corner tl"></div>
+        <div class="corner tr"></div>
+        <div class="corner bl"></div>
+        <div class="corner br"></div>
+        <div class="number-label">GENERATED NUMBER</div>
+        <div class="number-output" id="numberOutput">—</div>
+        <div class="generation-tag" id="genTag">AWAITING GENERATION</div>
+      </div>
+    </section>
+
+    <!-- Timer ring -->
+    <section class="timer-section">
+      <div class="timer-wrap">
+        <svg class="timer-ring" viewBox="0 0 200 200">
+          <circle class="ring-bg" cx="100" cy="100" r="88"/>
+          <circle class="ring-progress" id="ringProgress" cx="100" cy="100" r="88"/>
+        </svg>
+        <div class="timer-inner">
+          <div class="timer-label">NEXT IN</div>
+          <div class="timer-countdown" id="timerCountdown">60</div>
+          <div class="timer-unit">SEC</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Range controls -->
+    <section class="controls">
+      <div class="control-title">NUMBER RANGE</div>
+      <div class="range-row">
+        <div class="range-group">
+          <label class="range-label">MIN</label>
+          <input type="number" id="minVal" class="range-input" value="1" min="0" />
+        </div>
+        <div class="range-divider">→</div>
+        <div class="range-group">
+          <label class="range-label">MAX</label>
+          <input type="number" id="maxVal" class="range-input" value="100" min="1" />
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-generate" id="generateBtn" onclick="generateNow()">
+          <span class="btn-icon">⚡</span> GENERATE NOW
+        </button>
+        <button class="btn btn-reset" onclick="resetSystem()">
+          <span class="btn-icon">↺</span> RESET
+        </button>
+      </div>
+    </section>
+
+    <!-- History log -->
+    <section class="history-section">
+      <div class="history-header">
+        <span class="history-title">GENERATION LOG</span>
+        <span class="history-count" id="historyCount">0 entries</span>
+      </div>
+      <ul class="history-list" id="historyList">
+        <li class="history-empty">No history yet. Generator will auto-trigger every 60 seconds.</li>
+      </ul>
+    </section>
+
+    <!-- Stats bar -->
+    <section class="stats-bar">
+      <div class="stat">
+        <div class="stat-val" id="statTotal">0</div>
+        <div class="stat-lbl">TOTAL</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="stat-val" id="statMin">—</div>
+        <div class="stat-lbl">LOWEST</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="stat-val" id="statMax">—</div>
+        <div class="stat-lbl">HIGHEST</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="stat-val" id="statAvg">—</div>
+        <div class="stat-lbl">AVERAGE</div>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="rng.js"></script>
+  <script src="background.js"></script>
 </body>
 </html>
